@@ -1,25 +1,16 @@
-name: Deploy to Azure VMs
+name: Run SSH Script
 
-on:
-  push:
-    branches:
-      - main
+on: [push]
 
 jobs:
-  deploy:
+  run_script:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
-    - name: Configure SSH Key
+    - name: Run SSH Script
       run: |
-        echo "$(<id_rsa)" > /home/azureuser/.ssh/id_rsa
-        chmod 600 /home/azureuser/.ssh/id_rsa
-        echo -e "172.203.185.112\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-
-    - name: Deploy to Azure VM
-      run: |
-        ssh -i ~/.ssh/id_rsa azureuser@172.203.185.112 'cd /home/azureuser/wilkins-api && git pull origin main && docker-compose up -d'
-      
+        chmod +x sd.sh
+        ./sd.sh
