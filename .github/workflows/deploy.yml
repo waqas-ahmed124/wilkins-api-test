@@ -1,17 +1,26 @@
-name: Run SSH Script
+name: Update Docker Containers on Azure VM
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  run_script:
+  update_containers:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
-    - name: Run SSH Script
+    - name: Configure SSH Key
       run: |
-        chmod +x sd.sh
-        ./sd.sh
-        cd /home/azureuser/wilkins-api && git pull origin main && docker-compose up -d
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        echo -e "Host 172.203.185.112\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+
+    - name: Update Docker Containers on Azure VM
+      run: |
+        ssh -i ~/.ssh/id_rsa $SSH_USERNAME@172.203.185.112 'cd /home/azureuser/wilkins-api && docker-compose pull && docker-compose up -d'
+      env:
+        SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
