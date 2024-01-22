@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "apiserver"
+version = "0.1.0"
+description = ""
+authors = ["BeyondgenAI <contact@beyondgen.ai>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+uvicorn = "^0.24.0.post1"
+alembic = "^1.12.1"
+pydantic = {extras = ["email"], version = "^2.5.2"}
+black = "^23.10.1"
+fastapi = "^0.104.1"
+sqlalchemy = "^2.0.23"
+fastapi-sqlalchemy = "^0.2.1"
+psycopg2-binary = "^2.9.9"
+passlib = "1.7.4"
+python-jose = "3.3.0"
+python-multipart = "^0.0.6"
+python-dotenv = "^1.0.0"
+httpx = "0.26.0"
+azure-storage-blob = "12.19.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

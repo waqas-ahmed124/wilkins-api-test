@@ -1,0 +1,54 @@
+version: '3.8'
+services:
+  app: 
+    build: ./
+    container_name: app
+    ports:
+      - 3001:3001
+    volumes:
+      - ./src:/app
+      - "./pyproject.toml:/app/pyproject.toml"
+    command: bash -c "poetry run alembic upgrade head && poetry run uvicorn apiserver.main:app --host 0.0.0.0 --port 3001 --reload"
+#    depends_on:
+#      - db
+    env_file: .env.local
+    restart: always
+    networks:
+      - wilkins-net
+
+#  db:
+#    image: postgres:15
+#    container_name: wilkins-db
+#    restart: always
+#    ports:
+#      - 5432:5432
+#    volumes:
+#      - db:/var/lib/postgresql/data
+#    env_file: .env.local
+#    networks:
+#      - wilkins-net
+
+#  pgadmin:
+#     image: dpage/pgadmin4:latest
+#     container_name: pgadmin
+#     restart: always
+#     environment:
+#       PGADMIN_DEFAULT_EMAIL: maaz@email.com
+#       PGADMIN_DEFAULT_PASSWORD: 1234
+#     depends_on:
+#       - db
+#     ports:
+#       - "5050:80"
+#     volumes:
+#       - pgadmin_data:/var/lib/pgadmin
+#     networks:
+#       - wilkins-net
+
+#volumes:
+#  pgadmin_data:
+#  db:
+#    driver: local
+
+networks:
+  wilkins-net:
+    name: wilkins-net
