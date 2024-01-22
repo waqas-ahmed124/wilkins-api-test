@@ -22,7 +22,7 @@ jobs:
 
     - name: Deploy to Azure VM
       run: |
-        ssh -i ~/.ssh/id_rsa $SSH_USERNAME@your-vm-ip 'cd /home/azureuser/wilkins-api && git pull origin main && docker-compose up -d'
+        ssh -i ~/.ssh/id_rsa $SSH_USERNAME@172.203.185.112 'cd /home/azureuser/wilkins-api && git pull origin main && docker-compose up -d'
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
