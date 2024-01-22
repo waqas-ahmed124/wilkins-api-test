@@ -15,7 +15,6 @@ jobs:
 
     - name: Configure SSH Key
       run: |
-        chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -t rsa 172.203.185.112 >> ~/.ssh/known_hosts
 
     - name: Deploy to Azure VM
