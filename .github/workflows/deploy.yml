@@ -13,10 +13,15 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
+    - name: Generate SSH Key Pair
+      run: |
+        ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -N ''
+
+    - name: Display Public Key
+      run: cat ~/.ssh/id_rsa.pub
+
     - name: Configure SSH Key
       run: |
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
         echo -e "Host 172.203.185.112\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
     - name: Update Docker Containers on Azure VM
