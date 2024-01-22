@@ -15,10 +15,9 @@ jobs:
 
     - name: Configure SSH Key
       run: |
-        mkdir -p ~/.ssh
-        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        cp /home/azureuser/.ssh/id_rsa ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+        ssh-keyscan -t rsa 172.203.185.112 >> ~/.ssh/known_hosts
 
     - name: Deploy to Azure VM
       run: |
