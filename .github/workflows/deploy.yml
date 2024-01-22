@@ -26,6 +26,6 @@ jobs:
 
     - name: Update Docker Containers on Azure VM
       run: |
-        ssh -v -i ~/.ssh/id_rsa $SSH_USERNAME@172.203.185.112 'cd /home/azureuser/wilkins-api && docker-compose pull && docker-compose up -d'
+        ssh -v -i ~/.ssh/id_rsa azureuser@172.203.185.112 'cd /home/azureuser/wilkins-api && docker-compose pull && docker-compose up -d'
       env:
         SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
