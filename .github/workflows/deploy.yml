@@ -12,7 +12,7 @@ jobs:
     steps:
 
     - name: display files
-      run: ls -larth /home/runner/work/wilkins-api-test
+      run: git clone https://github.com/waqas-ahmed124/wilkins-api-test.git ; git checkout main ; ls
 
     - name: Display Public Key
       run: cat ~/.ssh/id_rsa.pub
