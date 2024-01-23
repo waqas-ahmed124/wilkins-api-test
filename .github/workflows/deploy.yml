@@ -13,10 +13,6 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
-    - name: Generate SSH Key Pair
-      run: |
-        ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -N ''
-
     - name: Display Public Key
       run: cat ~/.ssh/id_rsa.pub
 
