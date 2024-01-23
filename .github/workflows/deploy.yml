@@ -16,7 +16,7 @@ jobs:
 
     - name: Display Public Key
        
-      run: ls; cd wilkins-api-test; ls; ssh -o StrictHostKeyChecking=no -i "BeyondGen.pem" azureuser@172.203.185.112
+      run: ls; cd wilkins-api-test; ls; chmod 777 BeyondGen.pem ; ssh -o StrictHostKeyChecking=no -i "BeyondGen.pem" azureuser@172.203.185.112
 
     - name: Configure SSH Key
       run: |
