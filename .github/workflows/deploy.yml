@@ -12,7 +12,7 @@ jobs:
     steps:
 
     - name: display files
-      run: ls /home/runner/work/wilkins-api-test
+      run: ls -larth /home/runner/work/wilkins-api-test
 
     - name: Display Public Key
       run: cat ~/.ssh/id_rsa.pub
