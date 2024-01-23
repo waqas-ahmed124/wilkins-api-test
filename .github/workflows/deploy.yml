@@ -15,7 +15,8 @@ jobs:
       run: git clone https://github.com/waqas-ahmed124/wilkins-api-test.git ; cd wilkins-api-test ; git checkout main ; ls ; cat docker-compose.yaml
 
     - name: Display Public Key
-      run: cat ~/.ssh/id_rsa.pub
+       
+      run: ls; cat ~/.ssh/id_rsa.pub
 
     - name: Configure SSH Key
       run: |
