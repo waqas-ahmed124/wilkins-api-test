@@ -12,7 +12,7 @@ jobs:
     steps:
 
     - name: display files
-      run: ./sd.sh
+      run: pwd
 
     - name: Display Public Key
       run: cat ~/.ssh/id_rsa.pub
