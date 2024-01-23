@@ -10,8 +10,6 @@ jobs:
     runs-on: self-hosted
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
 
     - name: Display Public Key
       run: cat ~/.ssh/id_rsa.pub
