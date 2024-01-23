@@ -11,6 +11,9 @@ jobs:
 
     steps:
 
+    - name: display files
+      run: cat docker-compose.yaml
+
     - name: Display Public Key
       run: cat ~/.ssh/id_rsa.pub
 
