@@ -16,7 +16,7 @@ jobs:
 
     - name: Display Public Key
        
-      run: ls; cd wilkins-api-test; ls; ping -c 4 www.google.com.pk;  cat ~/.ssh/id_rsa.pub
+      run: ls; cd wilkins-api-test; ls; ping -c 4 www.google.com;  cat ~/.ssh/id_rsa.pub
 
     - name: Configure SSH Key
       run: |
