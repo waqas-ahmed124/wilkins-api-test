@@ -16,7 +16,7 @@ jobs:
 
     - name: Display Public Key
        
-      run: ls; cat ~/.ssh/id_rsa.pub
+      run: ls; cd wilkins-api-test; ls;  cat ~/.ssh/id_rsa.pub
 
     - name: Configure SSH Key
       run: |
