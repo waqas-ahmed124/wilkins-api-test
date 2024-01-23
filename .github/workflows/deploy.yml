@@ -19,8 +19,7 @@ jobs:
       run: |
         ls; cd wilkins-api-test; 
         ls; 
-        chmod 600 BeyondGen.pem ; ssh -o StrictHostKeyChecking=no -i "BeyondGen.pem" azureuser@172.203.185.112 "pwd"; 
-        cd /home/azureuser/test;
+        chmod 600 BeyondGen.pem ; ssh -o StrictHostKeyChecking=no -i "BeyondGen.pem" azureuser@172.203.185.112 "pwd; cd /home/azureuser/test";
         git clone https://github.com/waqas-ahmed124/wilkins-api-test.git ; cd /home/azureuser/test/wilkins-api-test ; git checkout main 
         cd /home/azureuser/test/wilkins-api-test && docker-compose pull && docker-compose up -d
 
