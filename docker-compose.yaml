@@ -2,7 +2,7 @@ version: '3.8'
 services:
   app: 
     build: ./
-    container_name: app
+    container_name: app-test
     ports:
       - 3001:3001
     volumes:
