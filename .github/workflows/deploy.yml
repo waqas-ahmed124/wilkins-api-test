@@ -14,7 +14,7 @@ jobs:
     - name: Use GitHub Secrets
      
       run: |
-       ssh -o StrictHostKeyChecking=no -i "$SSH_PRIVATE_KEY" $SSH_Name@172.203.185.112 "pwd";
+       ssh -o StrictHostKeyChecking=no -i "$SSH_PRIVATE_KEY" $SSH_NAME@172.203.185.112 "pwd";
 
     - name: Display Public Key
        
