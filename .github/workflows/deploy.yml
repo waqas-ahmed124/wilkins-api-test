@@ -11,8 +11,12 @@ jobs:
 
     steps:
 
-    - name: display files
-      run: git clone https://github.com/waqas-ahmed124/wilkins-api-test.git ; cd wilkins-api-test ; git checkout main ; ls ; cat docker-compose.yaml
+    - name: Use GitHub Secrets
+      run: |
+        echo "My GitHub Secret: ${{ secrets.SSH_PRIVATE_KEY }}"
+        # Use the secret in your commands or scripts
+        # For example:
+        # echo "${{ secrets.SSH_PRIVATE_KEY }}" | some_command
 
     - name: Display Public Key
        
