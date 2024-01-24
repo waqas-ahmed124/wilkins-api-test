@@ -14,7 +14,7 @@ ENV VENV /opt/venv
 RUN python3 -m venv ${VENV}
 ENV PATH="${VENV}/bin:$PATH"
 
-WORKDIR /app
+WORKDIR /apps
 
 COPY ./src ./
 # Copy Poetry file
