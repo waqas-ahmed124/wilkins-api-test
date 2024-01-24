@@ -26,6 +26,6 @@ RUN pip install poetry==1.5.1
 RUN poetry config virtualenvs.create false
 RUN poetry install --no-dev
 
-EXPOSE 3001
+EXPOSE 3002
 
 CMD ["poetry", "run", "uvicorn", "apiserver.main:app", "--host", "0.0.0.0", "--port", "3001"]
