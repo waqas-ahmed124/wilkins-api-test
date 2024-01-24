@@ -1,4 +1,4 @@
-name: Update Docker Containers on Azure VM
+name: SSH into VM
 
 on:
   push:
@@ -6,20 +6,20 @@ on:
       - main
 
 jobs:
-  update_containers:
+  sshJob:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Use GitHub Secrets
-     
-      run: |
-       ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY $SSH_NAME@172.203.185.112;
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          echo "StrictHostKeyChecking no" > ~/.ssh/config
 
-    - name: Display Public Key
-       
-      run: |
-        ls; cd wilkins-api-test; 
-        ls; 
-        chmod 600 BeyondGen.pem ; ssh -o StrictHostKeyChecking=no -i "BeyondGen.pem" azureuser@172.203.185.112 "pwd; cd /home/azureuser/test ; git clone https://github.com/waqas-ahmed124/wilkins-api-test.git ; ls -larth; cd /home/azureuser/test/wilkins-api-test ; git checkout main ; cd /home/azureuser/test/wilkins-api-test && docker-compose pull && docker-compose up --build ";
-
+      - name: SSH into VM
+        run: |
+          ssh -i ~/.ssh/id_rsa ${{ secrets.SSH_USERNAME }}@172.203.185.112 "pwd"
