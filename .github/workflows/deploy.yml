@@ -12,11 +12,9 @@ jobs:
     steps:
 
     - name: Use GitHub Secrets
+     
       run: |
-        echo "My GitHub Secret: ${{ secrets.SSH_PRIVATE_KEY }}"
-        # Use the secret in your commands or scripts
-        # For example:
-        # echo "${{ secrets.SSH_PRIVATE_KEY }}" | some_command
+       ssh -o StrictHostKeyChecking=no -i "$SSH_PRIVATE_KEY" $SSH_Name@172.203.185.112 "pwd;
 
     - name: Display Public Key
        
