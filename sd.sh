@@ -7,4 +7,4 @@ VM_IP="172.203.185.112"
 
 # SSH command to connect to the VM
 ssh -i "$SSH_KEY_PATH" "$SSH_USERNAME@$VM_IP"
-echo "Script ran successfully!y"
+echo "Script ran successfully!ffy"
